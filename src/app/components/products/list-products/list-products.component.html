@@ -1,0 +1,288 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>List Products</h5>
+          <form class="needs-validation" [formGroup]="productsearch">
+            <div class="form">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Enter product name"
+                  formControlName="searchValue"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary m-2"
+              (click)="searchProduct()"
+            >
+              Search
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary m-2"
+              (click)="onStart()"
+            >
+              All
+            </button>
+          </form>
+        </div>
+        <div class="card-body">
+          <ng-template #editproduct let-modal>
+            <div class="modal-header">
+              <h5 class="modal-title f-w-600" id="exampleModalLabel">
+                Edit Product
+              </h5>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="needs-validation" [formGroup]="productedit">
+                <div class="form">
+                  <div class="form-group">
+                    <label for="validationCustom01" class="mb-1">Name :</label>
+                    <input
+                      class="form-control"
+                      id="validationCustom01"
+                      type="text"
+                      formControlName="name"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom01" class="mb-1"
+                      >Description :</label
+                    >
+                    <input
+                      class="form-control"
+                      id="validationCustom01"
+                      type="text"
+                      formControlName="description"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom01" class="mb-1"
+                      >Category ID :</label
+                    >
+                    <input
+                      class="form-control"
+                      id="validationCustom01"
+                      type="text"
+                      formControlName="category_id"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom01" class="mb-1"
+                      >Brand ID :</label
+                    >
+                    <input
+                      class="form-control"
+                      id="validationCustom01"
+                      type="text"
+                      formControlName="brand_id"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="updateProduct()"
+              >
+                Save
+              </button>
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')"
+              >
+                Close
+              </button>
+            </div>
+          </ng-template>
+
+          <ng-template #viewproduct let-modal>
+            <div class="modal-header">
+              <h5 class="modal-title f-w-600" id="exampleModalLabel">
+                View Product Details
+              </h5>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="needs-validation">
+                <div class="form" *ngIf="brandFlag">
+                  <div class="form-group">
+                    <label for="validationCustom01" class="mb-1"
+                      >Product ID:
+                    </label>
+                    <span>{{ viewProduct.product_id }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom02" class="mb-1"
+                      >Product Name:
+                    </label>
+                    <span>{{ viewProduct.product_name }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product UUID:
+                    </label>
+                    <span>{{ viewProduct.product_uuid }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Category ID:
+                    </label>
+                    <span>{{ viewProduct.product_category_id }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Brand ID:
+                    </label>
+                    <span>{{ viewProduct.product_brand_id }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Description:
+                    </label>
+                    <span>{{ viewProduct.product_desc }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Rating:
+                    </label>
+                    <span>{{ viewProduct.product_rating }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Ranking:
+                    </label>
+                    <span>{{ viewProduct.product_ranking }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Deleted:
+                    </label>
+                    <span>{{ viewProduct.product_is_deleted }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Status:
+                    </label>
+                    <span>{{ viewProduct.product_status }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Created By:
+                    </label>
+                    <span>{{ viewProduct.product_created_by }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Updated By:
+                    </label>
+                    <span>{{ viewProduct.product_updated_by }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Created At:
+                    </label>
+                    <span>{{ viewProduct.product_created_at }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="validationCustom03" class="mb-1"
+                      >Product Updated At:
+                    </label>
+                    <span>{{ viewProduct.product_updated_at }}</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+                (click)="modal.dismiss('Cross click')"
+              >
+                Close
+              </button>
+            </div>
+          </ng-template>
+
+          <div id="batchDelete" class="category-table custom-datatable">
+            <div class="table-responsive">
+              <ng2-smart-table
+                [settings]="settings"
+                [source]="source"
+                (edit)="edit($event, editproduct)"
+                (userRowSelect)="view($event, viewproduct)"
+              >
+                <!-- (userRowSelect)="view($event,viewproduct)" -->
+              </ng2-smart-table>
+              <!-- <div class="pager p-2">
+                <div class="d-flex justify-content-center align-items-center">
+                  <select
+                    name="limit"
+                    class="p-2"
+                    id="limt"
+                    (change)="limtchange($event)"
+                  >
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <div class="p-2">
+                    <a class="p-2 border active">1</a>
+                    <a class="p-2 border">2</a>
+                    <a class="p-2 border">3</a>
+                    <a class="p-2 border">4</a>
+                    <a class="p-2 border">5</a>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

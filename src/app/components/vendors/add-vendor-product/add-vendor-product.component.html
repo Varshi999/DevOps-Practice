@@ -1,0 +1,109 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>List Products</h5>
+                    <form class="needs-validation" [formGroup]="productsearch">
+                        <div class="form">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Enter product name"
+                                    formControlName="searchValue">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="searchProduct()">Search</button>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <!-- <div class="btn-popup pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
+                            data-target="#exampleModal" (click)="open(addcategory)">Add Category</button> -->
+                    <!-- <ng-template #addcategory let-modal>
+                            <div class="modal-header">
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Category</h5>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" [formGroup]="categoryadd">
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label for="validationCustom01" class="mb-1">Category Name :</label>
+                                            <input class="form-control" id="validationCustom01" type="text"
+                                                formControlName="name">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" (click)="addCategory()">Save</button>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                    (click)="modal.dismiss('Cross click')">Close</button>
+                            </div>
+                        </ng-template> -->
+                    <!-- </div> -->
+                    <ng-template #editproduct let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Vendor Product</h5>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <div>
+                                    <label class="mb-1">Name :</label>
+                                    <span>{{product_name}}</span>
+                                </div>
+                                <br>
+                                <form class="needs-validation" [formGroup]="productprice" class="mt-1">
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label class="mb-1">Actual Price :</label>
+                                            <input class="form-control" type="number" placeholder="Enter actual price"
+                                                formControlName="actualPrice">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1">Selling Price :</label>
+                                            <input class="form-control" type="number" placeholder="Enter selling price"
+                                                formControlName="sellingPrice">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" [disabled]="!productprice.valid"
+                                (click)="updateProduct()">Save</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                (click)="modal.dismiss('Cross click')">Close</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #viewproduct let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Category</h5>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </ng-template>
+                    <div id="batchDelete" class="category-table custom-datatable">
+                        <div class="table-responsive">
+                            <ng2-smart-table [settings]="settings" [source]="products"
+                                (userRowSelect)="edit($event,editproduct)">
+                                <!--  (userRowSelect)="view($event,viewproduct)" -->
+                            </ng2-smart-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

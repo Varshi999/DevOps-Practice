@@ -1,0 +1,227 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>Vendor Details</h5>
+        </div>
+        <div class="card-body vendor-table">
+            <div id="batchDelete" class="custom-datatable vendor-list">
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Vendor</h5>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation" [formGroup]="vendorForm">
+                            <div class="form">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Name :</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        formControlName="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="mb-1">Commission :</label>
+                                    <input class="form-control" id="validationCustom02" type="text"
+                                        formControlName="commission">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">GST No. :</label>
+                                    <input class="form-control" id="validationCustom03" type="text"
+                                        formControlName="gst_no">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom04" class="mb-1">Address :</label>
+                                    <input class="form-control" id="validationCustom04" type="text"
+                                        formControlName="address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom05" class="mb-1">lat :</label>
+                                    <input class="form-control" id="validationCustom05" type="text"
+                                        formControlName="lat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom06" class="mb-1">long :</label>
+                                    <input class="form-control" id="validationCustom06" type="text"
+                                        formControlName="lng">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom07" class="mb-1">City :</label>
+                                    <input class="form-control" id="validationCustom07" type="text"
+                                        formControlName="city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom08" class="mb-1">State :</label>
+                                    <input class="form-control" id="validationCustom08" type="text"
+                                        formControlName="state">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom09" class="mb-1">Pincode :</label>
+                                    <input class="form-control" id="validationCustom09" type="text"
+                                        formControlName="pin_code">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label for="validationCustom10" class="mb-1">Country :</label>
+                                    <input class="form-control" id="validationCustom10" type="text"
+                                        formControlName="country">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="createVendor()">Save</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">Close</button>
+                    </div>
+                </ng-template>
+
+                <ng-template #viewvendor let-modal>
+                    <div class="modal-header">
+                        <h5 class="modal-title f-w-600" id="exampleModalLabel">View Vendor Details</h5>
+                        <button type="button" class="btn btn-primary"
+                            [routerLink]="['/vendors/add-vendor-product', viewVendor.vendor_uuid]" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">
+                            Add Products
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                            [routerLink]="['/vendors/vendor-product-list', viewVendor.vendor_uuid]" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">
+                            List Products
+                        </button>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation">
+                            <div class="form" *ngIf="brandFlag">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Vendor ID: </label>
+                                    <span>{{viewVendor.vendor_id}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="mb-1">Vendor Name: </label>
+                                    <span>{{viewVendor.vendor_name}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor UUID: </label>
+                                    <span>{{viewVendor.vendor_uuid}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Commission: </label>
+                                    <span>{{viewVendor.vendor_commission}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor GST: </label>
+                                    <span>{{viewVendor.vendor_gst_no}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Address 1: </label>
+                                    <span>{{viewVendor.vendor_address_1}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Address 2: </label>
+                                    <span>{{viewVendor.vendor_address_2}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Latitude: </label>
+                                    <span>{{viewVendor.vendor_lat}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Longitude: </label>
+                                    <span>{{viewVendor.vendor_lng}}</span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor City: </label>
+                                    <span>{{viewVendor.vendor_city}}</span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor State: </label>
+                                    <span>{{viewVendor.vendor_state}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Pincode: </label>
+                                    <span>{{viewVendor.vendor_pin_code}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Country: </label>
+                                    <span>{{viewVendor.vendor_country}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Status: </label>
+                                    <span>{{viewVendor.vendor_status}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Stop Orders: </label>
+                                    <span>{{viewVendor.vendor_stop_orders}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Closed: </label>
+                                    <span>{{viewVendor.vendor_closed}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Rating: </label>
+                                    <span>{{viewVendor.vendor_rating}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Ranking: </label>
+                                    <span>{{viewVendor.vendor_ranking}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Created By: </label>
+                                    <span>{{viewVendor.vendor_created_by}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Updated By: </label>
+                                    <span>{{viewVendor.vendor_updated_by}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Created At: </label>
+                                    <span>{{viewVendor.vendor_created_at}}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="mb-1">Vendor Updated At: </label>
+                                    <span>{{viewVendor.vendor_updated_at}}</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">Close</button>
+                    </div>
+                </ng-template>
+
+                <div class="table-responsive ">
+                    <ng2-smart-table [settings]="settings" [source]="vendors" (edit)="edit($event,content)"
+                        (userRowSelect)="view($event,viewvendor)">
+                    </ng2-smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

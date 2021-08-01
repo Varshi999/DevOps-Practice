@@ -1,0 +1,134 @@
+<div class="page-wrapper">
+  <div style="text-align: center; margin-top: 20px">
+    <img
+      class="blur-up lazyloaded"
+      style="align-content: center"
+      src="assets/images/logo.svg"
+      alt="logo"
+    />
+    <h3 style="color: #9bc12d; margin-top: 20px; margin-bottom: 15px">
+      Welcome to Grow Baskets Admin portal
+    </h3>
+  </div>
+  <div class="authentication-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 p-0" style="margin: auto">
+          <div class="card tab2-card">
+            <div class="card-body">
+              <ngb-tabset class="tab-coupon mb-0">
+                <ngb-tab>
+                  <ng-template ngbTabTitle
+                    ><i class="icon-user mr-2"></i>Login</ng-template
+                  >
+                  <ng-template ngbTabContent>
+                    <div
+                      class="tab-pane fade active show"
+                      id="account"
+                      role="tabpanel"
+                      aria-labelledby="account-tab"
+                    >
+                      <form
+                        [formGroup]="loginForm"
+                        novalidate=""
+                        (ngSubmit)="onLogin()"
+                      >
+                        <div class="form-group">
+                          <input
+                            required=""
+                            name="login[email]"
+                            type="email"
+                            class="form-control"
+                            placeholder="Email"
+                            id="exampleInputEmail1"
+                            formControlName="email"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <input
+                            required=""
+                            name="login[password]"
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            formControlName="password"
+                          />
+                        </div>
+                        <div class="form-button">
+                          <button
+                            class="btn btn-primary"
+                            type="submit"
+                            [disabled]="!loginForm.valid"
+                          >
+                            Login
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                  <ng-template ngbTabTitle
+                    ><i class="icon-unlock mr-2"></i> Forgot Password
+                    <ng-template ngbTabContent>
+                      <form
+                        [formGroup]="forgot"
+                        novalidate
+                        (ngSubmit)="onForgot()"
+                      >
+                        <div class="form-group">
+                          <input
+                            required=""
+                            name="forgotPass[email]"
+                            type="email"
+                            class="form-control"
+                            placeholder="Email"
+                            formControlName="email"
+                            id="email"
+                          />
+                        </div>
+                        <div class="form-button">
+                          <button
+                            class="btn btn-primary"
+                            type="submit"
+                            [disabled]="!forgot.valid"
+                          >
+                            Send Email
+                          </button>
+                        </div>
+                      </form>
+                    </ng-template>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="text-align: center">
+          <h4 style="color: #9bc12d">
+            Welcome to Largest E-Commerce Marketplace portal in Andhra Pradesh &
+            Telangana. We currently operate in Guntur, Vijayawada,
+            Visakhapatnam, Tirupati in AP & Hyderabad in Telangana.
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center">
+    <h5
+      style="
+        color: #9bc12d;
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        margin-bottom: 20px;
+      "
+    >
+      If you have any Login issues, contact us
+      <a href="mailto:">admin@growbaskets.com</a>
+    </h5>
+    <p style="color: #9bc12d; font-family: 'Helvetica', 'Arial', sans-serif">
+      Copyright 2021 © Grow Baskets All rights reserved.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <h5>Create Delivery Partner</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="accountForm" class="needs-validation user-add">
+        <div class="form-group row">
+          <label for="name" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter First Name</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            id="first_name"
+            formControlName="first_name"
+            autofocus
+            required
+            name="first_name"
+            type="text"
+          />
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter Last Name</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            id="last_name"
+            formControlName="last_name"
+            autofocus
+            required
+            name="last_name"
+            type="text"
+          />
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter Mobile Number</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            formControlName="mobile"
+            id="mobile"
+            name="mobile"
+            type="text"
+            required=""
+          />
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter Aadhaar Number</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            formControlName="aadhar_no"
+            id="aadhar_no"
+            name="aadhar_no"
+            type="text"
+            required=""
+          />
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter Driving License Number</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            formControlName="driving_license"
+            id="driving_license"
+            name="driving_license"
+            type="text"
+            required=""
+          />
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter RC Number</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            formControlName="rc_no"
+            id="rc_no"
+            name="rc_no"
+            type="text"
+            required=""
+          />
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-xl-3 col-md-4"
+            ><span>*</span>Enter Vehicle Number</label
+          >
+          <input
+            class="form-control col-xl-8 col-md-7"
+            formControlName="vehicle_no"
+            id="vehicle_no"
+            name="vehicle_no"
+            type="text"
+            required=""
+          />
+        </div>
+
+        <div class="pull-right">
+          <button type="button" (click)="onSubmit()" class="btn btn-primary">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <h5>Delivery Partner Details</h5>
+    </div>
+    <div class="card-body vendor-table">
+      <div class="btn-popup pull-right">
+        <a
+          class="btn btn-secondary"
+          [routerLink]="'/deliverypartners/createdeliverypartner'"
+          >Create User</a
+        >
+      </div>
+      <div id="batchDelete" class="custom-datatable vendor-list">
+        <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Vendor</h5>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation" [formGroup]="updateForm">
+                            <div class="form">
+                                <!-- <div class="form-group">
+                                    <label for="validationCustom01" class="mb-1">Name :</label>
+                                    <input class="form-control" id="validationCustom01" type="text"
+                                        formControlName="name">
+                                </div> -->
+                                <div class="form-group ">
+                                    <label for="first_name" class="mb-1"><span>*</span>Enter Name</label>
+                                    <input class="form-control" id="first_name" type="text" formControlName="first_name" autofocus required name="first_name" type="text" >
+                                </div>
+                                <div class="form-group ">
+                                    <label for="last_name" class="mb-1"><span>*</span>Enter Name</label>
+                                    <input class="form-control" id="last_name" type="text" formControlName="last_name" autofocus required name="last_name" type="text" >
+                                </div>
+                                <!-- <div class="form-group ">
+                                    <label for="mobile" class="mb-1"><span>*</span>Enter Mobile Number</label>
+                                    <input class="form-control" formControlName="mobile" id="mobile" name="mobile" type="text" required="">
+                                </div> -->
+                                <div class="form-group ">
+                                    <label for="mobile" class="mb-1"><span>*</span>Enter Aadhaar Number</label>
+                                    <input class="form-control" formControlName="aadhar_no" id="aadhar_no" name="aadhar_no" type="text" required="">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="mobile" class="mb-1"><span>*</span>Enter Driving License Number</label>
+                                    <input class="form-control" formControlName="driving_license" id="driving_license" name="driving_license" type="text" required="">
+                                </div>
+                                 <div class="form-group ">
+                                    <label for="mobile" class="mb-1"><span>*</span>Enter RC Number</label>
+                                    <input class="form-control" formControlName="rc_no" id="rc_no" name="rc_no" type="text" required="">
+                                </div>
+                                 <div class="form-group ">
+                                    <label for="mobile" class="mb-1"><span>*</span>Enter Vehicle Number</label>
+                                    <input class="form-control" formControlName="vehicle_no" id="vehicle_no" name="vehicle_no" type="text" required="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="updateDP()">Save</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            (click)="modal.dismiss('Cross click')">Close</button>
+                    </div>
+                </ng-template>
+        <div class="table-responsive">
+          <ng2-smart-table
+            [settings]="settings"
+            [source]="partners"
+            (edit)="onSaveConfirm($event,content)"
+            (userRowSelect)="selectDp($event)"
+          >
+          </ng2-smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
